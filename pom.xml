@@ -91,7 +91,7 @@
     <dependency>
       <artifactId>annotations</artifactId>
       <groupId>org.jetbrains</groupId>
-      <version>24.0.0</version>
+      <version>24.0.1</version>
     </dependency>
     <dependency>
       <artifactId>lombok</artifactId>
