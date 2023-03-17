@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2023 Risu
+  ~
+  ~  This source code is licensed under the MIT license found in the
+  ~  LICENSE file in the root directory of this source tree.
+  ~
+  -->
+
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <artifactId>erutcurts</artifactId>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <configuration>
+              <archive>
+                <manifest>
+                  <mainClass>
+                    io.github.risu729.erutcurts.Erutcurts
+                  </mainClass>
+                </manifest>
+              </archive>
+              <descriptorRefs>
+                <descriptorRef>jar-with-dependencies</descriptorRef>
+              </descriptorRefs>
+            </configuration>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <phase>package</phase>
+          </execution>
+        </executions>
+        <groupId>org.apache.maven.plugins</groupId>
+        <version>3.5.0</version>
+      </plugin>
+    </plugins>
+  </build>
+  <dependencies>
+    <dependency>
+      <artifactId>logback-classic</artifactId>
+      <groupId>ch.qos.logback</groupId>
+      <version>1.4.5</version>
+    </dependency>
+    <dependency>
+      <artifactId>deepl-java</artifactId>
+      <groupId>com.deepl.api</groupId>
+      <version>1.1.0</version>
+    </dependency>
+    <dependency>
+      <artifactId>caffeine</artifactId>
+      <groupId>com.github.ben-manes.caffeine</groupId>
+      <version>3.1.5</version>
+    </dependency>
+    <dependency>
+      <artifactId>MCPE-NBT</artifactId>
+      <groupId>com.github.MeItsLars</groupId>
+      <version>1.6</version>
+    </dependency>
+    <dependency>
+      <artifactId>gson</artifactId>
+      <groupId>com.google.code.gson</groupId>
+      <version>2.10.1</version>
+    </dependency>
+    <dependency>
+      <artifactId>guava</artifactId>
+      <groupId>com.google.guava</groupId>
+      <version>31.1-jre</version>
+    </dependency>
+    <dependency>
+      <artifactId>JDA</artifactId>
+      <exclusions>
+        <exclusion>
+          <artifactId>opus-java</artifactId>
+          <groupId>club.minnced</groupId>
+        </exclusion>
+      </exclusions>
+      <groupId>net.dv8tion</groupId>
+      <version>5.0.0-beta.5</version>
+    </dependency>
+    <dependency>
+      <artifactId>zip4j</artifactId>
+      <groupId>net.lingala.zip4j</groupId>
+      <version>2.11.4</version>
+    </dependency>
+    <dependency>
+      <artifactId>annotations</artifactId>
+      <groupId>org.jetbrains</groupId>
+      <version>24.0.0</version>
+    </dependency>
+    <dependency>
+      <artifactId>lombok</artifactId>
+      <groupId>org.projectlombok</groupId>
+      <version>1.18.26</version>
+    </dependency>
+    <dependency>
+      <artifactId>semver4j</artifactId>
+      <groupId>org.semver4j</groupId>
+      <version>4.3.0</version>
+    </dependency>
+  </dependencies>
+  <description>Discord bot supports Minecraft Bedrock structures.</description>
+
+  <developers>
+    <developer>
+      <email>risu.minecraft@gmail.com</email>
+      <id>risu729</id>
+      <name>Risu</name>
+    </developer>
+  </developers>
+  <groupId>io.github.risu729</groupId>
+  <issueManagement>
+    <system>GitHub Issues</system>
+    <url>https://github.com/risu729/erutcurts/issues</url>
+  </issueManagement>
+
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>https://opensource.org/licenses/MIT</url>
+    </license>
+  </licenses>
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <name>Erutcurts</name>
+
+  <properties>
+    <maven.compiler.source>19</maven.compiler.source>
+    <maven.compiler.target>19</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <repositories>
+    <repository>
+      <id>jitpack.io</id>
+      <url>https://jitpack.io</url>
+    </repository>
+  </repositories>
+
+  <scm>
+    <connection>scm:git:https://github.com/risu729/erutcurts</connection>
+    <developerConnection>scm:git:git@github.com:risu729/erutcurts</developerConnection>
+    <tag>HEAD</tag>
+    <url>https://github.com/risu729/erutcurts</url>
+  </scm>
+
+  <url>https://github.com/risu729/erutcurts</url>
+
+  <version>1.0.0</version>
+</project>
