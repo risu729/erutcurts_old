@@ -9,9 +9,9 @@
 package io.github.risu729.erutcurts.misc;
 
 import io.github.risu729.erutcurts.BotInfo;
-import io.github.risu729.erutcurts.Envs;
 import io.github.risu729.erutcurts.Erutcurts;
 import io.github.risu729.erutcurts.util.EmbedUtil;
+import io.github.risu729.erutcurts.util.Envs;
 import io.github.risu729.erutcurts.util.interaction.ExecutableSlashCommandData;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;

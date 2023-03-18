@@ -9,9 +9,9 @@
 package io.github.risu729.erutcurts.misc;
 
 import com.google.common.base.Throwables;
-import io.github.risu729.erutcurts.Envs;
 import io.github.risu729.erutcurts.Erutcurts;
 import io.github.risu729.erutcurts.util.EmbedUtil;
+import io.github.risu729.erutcurts.util.Envs;
 import java.awt.Color;
 import lombok.experimental.UtilityClass;
 import net.dv8tion.jda.api.entities.Guild;

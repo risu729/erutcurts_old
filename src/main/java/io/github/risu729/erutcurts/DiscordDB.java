@@ -18,6 +18,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import io.github.risu729.erutcurts.util.Caches;
+import io.github.risu729.erutcurts.util.Envs;
 import io.github.risu729.erutcurts.util.Forums;
 import io.github.risu729.erutcurts.util.gson.SemverTypeAdapter;
 import io.github.risu729.erutcurts.util.gson.TypeAdapters;

@@ -6,7 +6,7 @@
  *
  */
 
-package io.github.risu729.erutcurts;
+package io.github.risu729.erutcurts.util;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -14,7 +14,7 @@ import lombok.experimental.UtilityClass;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
-// wrap env variables to keep it consistent during runtime and for null checking
+// wrap env variables for null checking
 @UtilityClass
 public class Envs {
 
