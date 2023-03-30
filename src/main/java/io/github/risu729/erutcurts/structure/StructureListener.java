@@ -43,7 +43,8 @@ public final class StructureListener extends ListenerWithRegistry {
       }
 
       // ignore if pack auto-generation is disabled
-      if (!Settings.getInstance().isPackAutoGenerationEnabled(event.getGuild().getId())) {
+      if (event.isFromGuild()
+          && !Settings.getInstance().isPackAutoGenerationEnabled(event.getGuild().getId())) {
         return;
       }
 
