@@ -61,7 +61,7 @@ public record Block(
   public Block {
     checkArgument(!name.isBlank());
     checkArgument(blockEntityData == null || !blockEntityData.getElements().isEmpty());
-    checkArgument(tickDelay == null || tickDelay > 0);
+    checkArgument(tickDelay == null || tickDelay >= 0);
     checkArgument(!version.isBlank() && VERSION_PATTERN.matcher(version).matches());
   }
 }
