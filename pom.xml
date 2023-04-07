@@ -55,7 +55,7 @@
     <dependency>
       <artifactId>caffeine</artifactId>
       <groupId>com.github.ben-manes.caffeine</groupId>
-      <version>3.1.5</version>
+      <version>3.1.6</version>
     </dependency>
     <dependency>
       <artifactId>MCPE-NBT</artifactId>
