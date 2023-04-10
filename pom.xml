@@ -81,7 +81,7 @@
         </exclusion>
       </exclusions>
       <groupId>net.dv8tion</groupId>
-      <version>5.0.0-beta.6</version>
+      <version>5.0.0-beta.8</version>
     </dependency>
     <dependency>
       <artifactId>zip4j</artifactId>
