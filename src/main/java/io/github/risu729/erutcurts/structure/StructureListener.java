@@ -57,7 +57,8 @@ public final class StructureListener extends ListenerWithRegistry {
       // lasts in 10 secs, but this doesn't take that much time
       event.getChannel().sendTyping().queue();
 
-      Notifications.sendLog("Auto-generated pack.", event.getGuild(), event.getAuthor());
+      Notifications.sendLog(
+          "Auto-generated pack.", event.getGuild(), event.getAuthor(), structureAttachments);
 
       message
           .replyFiles(TargetType.BEHAVIOR.convert(structureAttachments))
