@@ -11,7 +11,6 @@ package io.github.risu729.erutcurts.structure.nbt;
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkState;
 
-import com.google.common.collect.MoreCollectors;
 import com.google.common.collect.Streams;
 import java.nio.file.Path;
 import java.util.Collections;
@@ -117,11 +116,10 @@ public record Structure(
                                         .map(ListTag::getElements)
                                         .stream()
                                         .flatMap(List::stream)
-                                        .collect(MoreCollectors.toOptional())
-                                        .flatMap(
-                                            tickQueueData -> tickQueueData.getByName("tick_delay"))
+                                        .map(tickQueueData -> tickQueueData.getByName("tick_delay"))
+                                        .flatMap(Optional::stream)
                                         .map(Tag::getAsInt)
-                                        .orElse(null)))
+                                        .toList()))
                         .orElse(block))
             .toList();
 

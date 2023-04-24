@@ -12,7 +12,7 @@ import static com.google.common.base.Preconditions.checkArgument;
 
 import com.google.common.primitives.Bytes;
 import com.google.common.primitives.Ints;
-import java.util.Optional;
+import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import nl.itslars.mcpenbt.tags.CompoundTag;
@@ -27,7 +27,7 @@ public record Block(
     // version contains 4 integers like 1.19.60.24 so can't use Semver as type
     @NotNull String version,
     @Nullable CompoundTag blockEntityData,
-    @Nullable Integer tickDelay) {
+    @NotNull List<@NotNull Integer> tickDelays) {
 
   @SuppressWarnings("WeakerAccess")
   public static final Block VOID = null;
@@ -43,25 +43,25 @@ public record Block(
             .mapToObj(Integer::toString)
             .collect(Collectors.joining(".")),
         null,
-        null);
+        List.of());
   }
 
   public Block(
       @NotNull Block basicBlock,
       @Nullable CompoundTag blockEntityData,
-      @Nullable IntTag tickDelay) {
+      @NotNull List<? extends @NotNull IntTag> tickDelays) {
     this(
         basicBlock.name(),
         basicBlock.states(),
         basicBlock.version(),
         blockEntityData,
-        Optional.ofNullable(tickDelay).map(IntTag::getValue).orElse(null));
+        tickDelays.stream().map(IntTag::getValue).toList());
   }
 
   public Block {
     checkArgument(!name.isBlank());
     checkArgument(blockEntityData == null || !blockEntityData.getElements().isEmpty());
-    checkArgument(tickDelay == null || tickDelay >= 0);
+    checkArgument(tickDelays.stream().allMatch(delay -> delay >= 0));
     checkArgument(!version.isBlank() && VERSION_PATTERN.matcher(version).matches());
   }
 }
