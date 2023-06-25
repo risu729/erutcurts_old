@@ -110,7 +110,7 @@ final class Help extends ExecutableSlashCommandData {
                                 Erutcurts.getJDA()
                                     .retrieveUserById(Envs.getEnv("ADMIN_USER_ID"))
                                     .complete()
-                                    .getAsTag()))
+                                    .getName()))
                     .setTimestamp(OffsetDateTime.of(LAST_EDIT.atStartOfDay(), ZoneOffset.UTC))
                     .build())
             .addComponents(ActionRow.partitionOf(Button.link(BotInfo.GITHUB_URL, "GitHub")))

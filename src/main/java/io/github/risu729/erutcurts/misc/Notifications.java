@@ -56,7 +56,7 @@ public class Notifications {
             .setColor(Color.GREEN)
             .setDescription(message)
             .addField("Guild", guild == null ? "DM" : guild.getName(), false)
-            .addField("User", user.getAsTag(), false)
+            .addField("User", user.getName(), false)
             .build(),
         attachments);
   }

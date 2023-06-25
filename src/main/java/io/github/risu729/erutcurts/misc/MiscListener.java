@@ -44,7 +44,7 @@ public final class MiscListener extends ListenerWithRegistry {
         .getGuild()
         .retrieveOwner()
         .map(Member::getUser)
-        .map(User::getAsTag)
+        .map(User::getName)
         .map(owner -> "Joined Guild: %s, Owner: %s".formatted(event.getGuild().getName(), owner))
         .queue(Notifications::sendNotification);
   }

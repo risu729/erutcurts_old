@@ -10,6 +10,7 @@ package io.github.risu729.erutcurts.util;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import io.github.cdimascio.dotenv.Dotenv;
 import lombok.experimental.UtilityClass;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -20,6 +21,6 @@ public class Envs {
 
   @Contract(pure = true)
   public @NotNull String getEnv(@NotNull String key) {
-    return checkNotNull(System.getenv(key), "Environment variable %s is not set", key);
+    return checkNotNull(Dotenv.load().get(key), "Environment variable %s is not set", key);
   }
 }

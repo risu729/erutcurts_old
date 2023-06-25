@@ -122,36 +122,44 @@ public abstract class ListenerWithRegistry extends ListenerAdapter {
   }
 
   // do not reply stacktrace for auto-complete because it is meaningless
+  @Override
   public final void onCommandAutoCompleteInteraction(
       @Nonnull CommandAutoCompleteInteractionEvent event) {
     Optional.ofNullable(optionRegistry.get(event.getName(), event.getFocusedOption().getName()))
         .ifPresent(option -> option.execute(event));
   }
 
+  @Override
   public final void onSlashCommandInteraction(@Nonnull SlashCommandInteractionEvent event) {
     onInteraction(ExecutableSlashCommandData.class, event);
   }
 
+  @Override
   public final void onUserContextInteraction(@Nonnull UserContextInteractionEvent event) {
     onInteraction(ExecutableUserCommandData.class, event);
   }
 
+  @Override
   public final void onMessageContextInteraction(@Nonnull MessageContextInteractionEvent event) {
     onInteraction(ExecutableMessageCommandData.class, event);
   }
 
+  @Override
   public final void onButtonInteraction(@Nonnull ButtonInteractionEvent event) {
     onInteraction(ExecutableButton.class, event);
   }
 
+  @Override
   public final void onModalInteraction(@Nonnull ModalInteractionEvent event) {
     onInteraction(ExecutableModal.class, event);
   }
 
+  @Override
   public final void onStringSelectInteraction(@Nonnull StringSelectInteractionEvent event) {
     onInteraction(ExecutableStringSelectMenu.class, event);
   }
 
+  @Override
   public final void onEntitySelectInteraction(@Nonnull EntitySelectInteractionEvent event) {
     onInteraction(ExecutableEntitySelectMenu.class, event);
   }
@@ -195,18 +203,25 @@ public abstract class ListenerWithRegistry extends ListenerAdapter {
   }
 
   // do not allow to override these onGeneric*Event methods
+  @Override
   public final void onGenericInteractionCreate(@Nonnull GenericInteractionCreateEvent event) {}
 
+  @Override
   public final void onGenericAutoCompleteInteraction(
       @Nonnull GenericAutoCompleteInteractionEvent event) {}
 
+  @Override
   public final void onGenericComponentInteractionCreate(
       @Nonnull GenericComponentInteractionCreateEvent event) {}
 
+  @Override
   public final void onGenericCommandInteraction(@Nonnull GenericCommandInteractionEvent event) {}
 
+  @Override
   public final void onGenericContextInteraction(@Nonnull GenericContextInteractionEvent<?> event) {}
 
+  @SuppressWarnings({"rawtypes", "RedundantSuppression"})
+  @Override
   public final void onGenericSelectMenuInteraction(
       @Nonnull GenericSelectMenuInteractionEvent event) {}
 }
