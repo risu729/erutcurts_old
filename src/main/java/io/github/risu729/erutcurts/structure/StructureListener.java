@@ -58,7 +58,7 @@ public final class StructureListener extends ListenerWithRegistry {
       event.getChannel().sendTyping().queue();
 
       Notifications.sendLog(
-          "Auto-generated pack.", event.getGuild(), event.getAuthor(), structureAttachments);
+          "Auto-generated pack.", event.isFromGuild() ? event.getGuild() : null, event.getAuthor(), structureAttachments);
 
       message
           .replyFiles(TargetType.BEHAVIOR.convert(structureAttachments))
