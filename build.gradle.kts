@@ -46,7 +46,7 @@ dependencies {
     // https://mvnrepository.com/artifact/net.lingala.zip4j/zip4j
     implementation("net.lingala.zip4j:zip4j:2.11.5")
     // https://mvnrepository.com/artifact/org.semver4j/semver4j
-    implementation("org.semver4j:semver4j:4.3.0")
+    implementation("org.semver4j:semver4j:5.0.0")
 
     // https://mvnrepository.com/artifact/com.deepl.api/deepl-java
     implementation("com.deepl.api:deepl-java:1.3.0")
