@@ -25,7 +25,7 @@ dependencies {
     // https://mvnrepository.com/artifact/com.google.guava/guava
     implementation("com.google.guava:guava:32.1.1-jre")
     // https://mvnrepository.com/artifact/com.github.ben-manes.caffeine/caffeine
-    implementation("com.github.ben-manes.caffeine:caffeine:3.1.6")
+    implementation("com.github.ben-manes.caffeine:caffeine:v3.1.7")
     // https://mvnrepository.com/artifact/com.google.code.gson/gson
     implementation("com.google.code.gson:gson:2.10.1")
     // https://mvnrepository.com/artifact/org.projectlombok/lombok
