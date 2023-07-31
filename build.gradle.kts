@@ -23,7 +23,7 @@ repositories {
 
 dependencies {
     // https://mvnrepository.com/artifact/com.google.guava/guava
-    implementation("com.google.guava:guava:32.1.1-jre")
+    implementation("com.google.guava:guava:32.1.2-jre")
     // https://mvnrepository.com/artifact/com.github.ben-manes.caffeine/caffeine
     implementation("com.github.ben-manes.caffeine:caffeine:v3.1.7")
     // https://mvnrepository.com/artifact/com.google.code.gson/gson
