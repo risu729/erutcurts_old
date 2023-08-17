@@ -85,7 +85,6 @@ public record ManifestMetadata(
 
     TypeAdapter<Semver> semverTypeAdapter = SemverTypeAdapter.newInstance(true, semver -> false);
 
-    @SuppressWarnings("ParameterNameDiffersFromOverriddenParameter")
     @Override
     public final void write(
         @NotNull JsonWriter jsonWriter, @NotNull List<@NotNull GeneratedWith> value)
@@ -103,7 +102,6 @@ public record ManifestMetadata(
       jsonWriter.endObject();
     }
 
-    @SuppressWarnings("ParameterNameDiffersFromOverriddenParameter")
     @Override
     public final @NotNull @UnmodifiableView List<@NotNull GeneratedWith> read(
         @NotNull JsonReader jsonReader) throws IOException {

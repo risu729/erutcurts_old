@@ -34,6 +34,7 @@ import net.dv8tion.jda.api.requests.GatewayIntent;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+@SuppressWarnings("LombokGetterMayBeUsed")
 @UtilityClass
 public class Erutcurts {
 

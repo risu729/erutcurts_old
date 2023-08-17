@@ -79,7 +79,7 @@ public class DiscordDB {
               })
           .build();
 
-  @SuppressWarnings({"ParameterNameDiffersFromOverriddenParameter", "unchecked"})
+  @SuppressWarnings("unchecked")
   @CheckReturnValue
   public <T> @NotNull T get(
       @NotNull String name,
@@ -89,7 +89,7 @@ public class DiscordDB {
     return (T) CACHE.get(name, key -> readData(name, type).map(formatter).orElseGet(fallback));
   }
 
-  @SuppressWarnings({"ParameterNameDiffersFromOverriddenParameter", "unchecked"})
+  @SuppressWarnings("unchecked")
   @CheckReturnValue
   public <T> @NotNull T get(
       @NotNull String name,
@@ -98,13 +98,12 @@ public class DiscordDB {
     return (T) CACHE.get(name, key -> readData(name, type).orElseGet(fallback));
   }
 
-  @SuppressWarnings({"ParameterNameDiffersFromOverriddenParameter", "unchecked"})
+  @SuppressWarnings("unchecked")
   @CheckReturnValue
   public <T> @NotNull Optional<T> get(@NotNull String name, @NotNull TypeToken<T> type) {
     return Optional.ofNullable((T) CACHE.get(name, key -> readData(name, type).orElse(null)));
   }
 
-  @SuppressWarnings("ParameterNameDiffersFromOverriddenParameter")
   public <T> void put(@NotNull String name, @NotNull T value) {
     CACHE.put(name, value);
   }

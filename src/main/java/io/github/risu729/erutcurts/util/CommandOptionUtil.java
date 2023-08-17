@@ -24,7 +24,7 @@ import org.jetbrains.annotations.NotNull;
 @UtilityClass
 public class CommandOptionUtil {
 
-  private final String DUMMY_DESCRIPTION = "---"; // zero-width space
+  private final String DUMMY_DESCRIPTION = "---";
 
   @Contract(pure = true)
   public @NotNull OptionData createWithBlankDescription(

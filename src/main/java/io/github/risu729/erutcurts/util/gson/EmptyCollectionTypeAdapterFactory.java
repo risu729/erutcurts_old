@@ -38,7 +38,6 @@ public final class EmptyCollectionTypeAdapterFactory implements TypeAdapterFacto
     var delegate = gson.getDelegateAdapter(this, type);
 
     return new TypeAdapter<T>() {
-      @SuppressWarnings("ParameterNameDiffersFromOverriddenParameter")
       @Override
       public void write(@NotNull JsonWriter writer, @NotNull T value) throws IOException {
         var isEmpty = isMap ? ((Map<?, ?>) value).isEmpty() : ((Collection<?>) value).isEmpty();
@@ -47,7 +46,6 @@ public final class EmptyCollectionTypeAdapterFactory implements TypeAdapterFacto
 
       // do not deserialize empty collections as null
       // because Gson always returns null if the value is not present and this can't be changed
-      @SuppressWarnings("ParameterNameDiffersFromOverriddenParameter")
       @Override
       public T read(@NotNull JsonReader reader) throws IOException {
         return delegate.read(reader);

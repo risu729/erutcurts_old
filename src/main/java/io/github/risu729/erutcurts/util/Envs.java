@@ -11,8 +11,6 @@ package io.github.risu729.erutcurts.util;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import io.github.cdimascio.dotenv.Dotenv;
-import lombok.AccessLevel;
-import lombok.experimental.FieldDefaults;
 import lombok.experimental.UtilityClass;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
