@@ -37,7 +37,7 @@ dependencies {
     implementation("io.github.cdimascio:dotenv-java:3.0.0")
 
     // https://mvnrepository.com/artifact/net.dv8tion/JDA
-    implementation("net.dv8tion:JDA:5.0.0-beta.14") {
+    implementation("net.dv8tion:JDA:5.0.0-beta.15") {
         exclude(module = "opus-java")
     }
     // https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
