@@ -49,7 +49,7 @@ dependencies {
     implementation("org.semver4j:semver4j:5.2.2")
 
     // https://mvnrepository.com/artifact/com.deepl.api/deepl-java
-    implementation("com.deepl.api:deepl-java:1.3.0")
+    implementation("com.deepl.api:deepl-java:1.4.0")
     implementation("com.github.MeItsLars:MCPE-NBT:1.6")
 }
 
