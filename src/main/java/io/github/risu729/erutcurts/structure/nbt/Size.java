@@ -32,18 +32,4 @@ public record Size(int x, int y, int z) {
   public int volume() {
     return x * y * z;
   }
-
-  @Contract(pure = true)
-  public @NotNull @Unmodifiable List<@NotNull Coordinate> coordinates() {
-    return IntStream.range(0, x)
-        .boxed()
-        .<Coordinate>mapMulti(
-            (x2, consumer) ->
-                IntStream.range(0, y)
-                    .forEach(
-                        y2 ->
-                            IntStream.range(0, z)
-                                .forEach(z2 -> consumer.accept(new Coordinate(x2, y2, z2)))))
-        .toList();
-  }
 }

@@ -13,15 +13,13 @@ import static com.google.common.base.Preconditions.checkState;
 
 import com.google.common.collect.Streams;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import nl.itslars.mcpenbt.NBTUtil;
 import nl.itslars.mcpenbt.tags.CompoundTag;
 import nl.itslars.mcpenbt.tags.IntTag;
@@ -38,7 +36,7 @@ import org.semver4j.Semver;
 public record Structure(
     int formatVersion,
     @NotNull Size size,
-    @NotNull Map<@NotNull Coordinate, @NotNull Layers> blockIndices,
+    @NotNull List<@NotNull List<@NotNull List<@NotNull Layers>>> blockIndices,
     @NotNull List<@NotNull CompoundTag> entities,
     @NotNull Coordinate structureWorldOrigin) {
 
@@ -131,17 +129,22 @@ public record Structure(
                 .toList());
     checkState(flatBlockIndices.size() == size.volume() * 2);
 
-    List<@NotNull Coordinate> coordinates = size.coordinates();
-    Map<Coordinate, Layers> blockIndices =
-        IntStream.range(0, size.volume())
-            .boxed()
-            .collect(
-                Collectors.toUnmodifiableMap(
-                    coordinates::get,
-                    index ->
-                        new Layers(
-                            flatBlockIndices.get(index),
-                            flatBlockIndices.get(index + size.volume()))));
+    List<List<List<Layers>>> blockIndices = new ArrayList<>(size.x());
+    for (var i = 0; i < size.x(); i++) {
+      blockIndices.add(new ArrayList<>(size.y()));
+      for (var j = 0; j < size.y(); j++) {
+        blockIndices.get(i).add(new ArrayList<>(size.z()));
+        for (var k = 0; k < size.z(); k++) {
+          var index = i * size.y() * size.z() + j * size.z() + k;
+          blockIndices
+              .get(i)
+              .get(j)
+              .add(
+                  new Layers(
+                      flatBlockIndices.get(index), flatBlockIndices.get(index + size.volume())));
+        }
+      }
+    }
 
     return new Structure(
         root.getByName("format_version").map(Tag::getAsInt).map(IntTag::getValue).orElseThrow(),
@@ -166,7 +169,9 @@ public record Structure(
   // get the greatest version of the blocks
   @Contract(pure = true)
   public @NotNull Semver getMinEngineVersion() {
-    return blockIndices.values().stream()
+    return blockIndices.stream()
+        .flatMap(List::stream)
+        .flatMap(List::stream)
         .filter(Predicate.not(Layers::isVoid))
         .<Block>mapMulti(
             (layer, consumer) -> {

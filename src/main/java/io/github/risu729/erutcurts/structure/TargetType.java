@@ -9,20 +9,24 @@
 package io.github.risu729.erutcurts.structure;
 
 import com.google.common.collect.MoreCollectors;
+import com.google.gson.GsonBuilder;
 import io.github.risu729.erutcurts.structure.behavior.Behavior;
 import io.github.risu729.erutcurts.structure.behavior.Identifier;
 import io.github.risu729.erutcurts.structure.behavior.World;
+import io.github.risu729.erutcurts.structure.nbt.Structure;
 import io.github.risu729.erutcurts.util.Attachments;
 import io.github.risu729.erutcurts.util.file.CloseablePath;
 import io.github.risu729.erutcurts.util.file.FileUtil;
 import java.io.IOException;
 import java.io.UncheckedIOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -46,11 +50,9 @@ import org.jetbrains.annotations.NotNull;
 enum TargetType {
   BEHAVIOR(true),
   SINGLE_BEHAVIOR(false),
-  WORLD(true);
-  /*
-  STRUCTURA(false),
-  SLICED_IMAGES(false),
-  */
+  WORLD(true),
+  //  STRUCTURA(false),
+  BLUEPRINT(false);
 
   private static final String COMMAND_TYPE = "type";
   static final OptionData OPTION =
@@ -115,17 +117,21 @@ enum TargetType {
               entry -> {
                 var structureName = entry.getKey();
                 var structurePath = entry.getValue();
-                if (this == SINGLE_BEHAVIOR) {
-                  try (var closeablePath =
-                      Behavior.generate(Map.of(structureName, structurePath))) {
-                    return FileUpload.fromData(closeablePath.path());
-                  } catch (IOException e) {
-                    throw new UncheckedIOException(e);
+                switch (this) {
+                  case SINGLE_BEHAVIOR -> {
+                    try (var closeablePath =
+                        Behavior.generate(Map.of(structureName, structurePath))) {
+                      return FileUpload.fromData(closeablePath.path());
+                    } catch (IOException e) {
+                      throw new UncheckedIOException(e);
+                    }
                   }
-                  /*case STRUCTURA -> throw new UnsupportedOperationException(
-                      "Structura is not supported yet");
-                  case SLICED_IMAGES -> throw new UnsupportedOperationException(
-                      "Sliced images are not supported yet");*/
+                    /*case STRUCTURA -> throw new UnsupportedOperationException(
+                    "Structura is not supported yet");*/
+                  case BLUEPRINT -> {
+                    throw new UnsupportedOperationException(
+                        "Blueprint is not supported yet");
+                  }
                 }
                 throw new AssertionError();
               })

@@ -23,6 +23,7 @@ import java.time.Duration;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.List;
+import java.util.stream.Collectors;
 import lombok.Getter;
 import lombok.experimental.UtilityClass;
 import net.dv8tion.jda.api.JDA;
@@ -92,6 +93,21 @@ public class Erutcurts {
     }
 
     Runtime.getRuntime().addShutdownHook(new Thread(Erutcurts::shutdown));
+
+    try {
+      System.out.println(
+          Block.fromJson(
+                  Files.readString(
+                          RESOURCES_DIR.resolve(
+                              Path.of("bedrock-samples", "resource_pack", "blocks.json")))
+                      .replace("\"format_version\" : [ 1, 1, 0 ],", ""))
+              .entrySet()
+              .stream()
+              .map(entry -> entry.getKey() + ": " + entry.getValue())
+              .collect(Collectors.joining("\n")));
+    } catch (IOException e) {
+      throw new UncheckedIOException(e);
+    }
   }
 
   @Contract(pure = true)
