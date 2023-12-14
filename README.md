@@ -1,4 +1,4 @@
-NEW VERSION IS AVAILABLE HERE https://github.com/risu729/erutcurts
+**NEW VERSION IS AVAILABLE HERE https://github.com/risu729/erutcurts**
 
 # Erutcurts
 
